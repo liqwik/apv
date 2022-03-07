@@ -203,11 +203,11 @@ class PdfFile {
         spacing += spacingPx;
       }
       if (showTwoPages && showCover && (i == 0 || i == getPagesCount() - 1)) {
-        pageSpacing.add(spacing);
+        pageSpacing.add(spacing / 1.5f);
       } else if (showTwoPages && i == 0) {
         pageSpacing.add(spacing / 1.5f);
       } else if (showTwoPages){
-        if(showCover && i % 2 != 0){
+        if(showCover && i % 2 == 0){
           pageSpacing.add(spacing / 1.5f);
         }else {
           pageSpacing.add(0f);
@@ -246,12 +246,12 @@ class PdfFile {
           offset += spacingPx / 2f;
         }
         pageOffsets.add(offset);
-        if((!showCover && i == 0) || (showCover && i%2 != 0)) {
+
+        if((!showCover && i == 0) || (showCover && i%2 == 0)) {
           offset += size;
-        }else {
+        } else {
           offset += size + pageSpacing.get(i) / 2f;
         }
-
       } else {
         pageOffsets.add(offset);
         offset += size + spacingPx;
